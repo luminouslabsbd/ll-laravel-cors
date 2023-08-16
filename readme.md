@@ -1,38 +1,7 @@
-# CORS Middleware for Laravel
-
-[![Build Status][ico-actions]][link-actions]
-[![Latest Stable Version](https://poser.pugx.org/fruitcake/laravel-cors/version.png)](https://packagist.org/packages/fruitcake/laravel-cors)
-[![Software License][ico-license]](LICENSE.md)
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Fruitcake](https://img.shields.io/badge/Powered%20By-Fruitcake-b2bc35.svg)](https://fruitcake.nl/)
-
-Implements https://github.com/fruitcake/php-cors for Laravel
-
 ## Note for users upgrading to Laravel 9, 10 or higher
 ### This package is deprecated because all supported Laravel versions now include the CORS middleware in the core.
 
 Since Laravel 9.2, this Middleware is included in laravel/framework. You can use the provided middleware, which should be compatible with the Middleware and config provided in this package. See https://github.com/laravel/laravel/pull/5825/files for the changes.
-
-Steps to upgrade:
- 1. Remove `"fruitcake/laravel-cors"` from your composer.json
- 2. Replace `\Fruitcake\Cors\HandleCors::class,` with `\Illuminate\Http\Middleware\HandleCors::class,` in `app/Http/Kernel.php`
-
-See `https://github.com/fruitcake/php-cors` for advanced usage. The config stays the same.
-
-## About
-
-The `laravel-cors` package allows you to send [Cross-Origin Resource Sharing](http://enable-cors.org/)
-headers with Laravel middleware configuration.
-
-If you want to have a global overview of CORS workflow, you can  browse
-this [image](http://www.html5rocks.com/static/images/cors_server_flowchart.png).
-
-## Upgrading from 0.x (barryvdh/laravel-cors)
-When upgrading from 0.x versions, there are some breaking changes:
- - **A new 'paths' property is used to enable/disable CORS on certain routes. This is empty by default, so fill it correctly!**
- - **Group middleware is no longer supported, use the global middleware**
- - The vendor name has changed (see installation/usage)
- - The casing on the props in `cors.php` has changed from camelCase to snake_case, so if you already have a `cors.php` file you will need to update the props in there to match the new casing.
 
 ## Features
 
@@ -42,16 +11,16 @@ When upgrading from 0.x versions, there are some breaking changes:
 
 ## Installation
 
-Require the `fruitcake/laravel-cors` package in your `composer.json` and update your dependencies:
+Require the `luminouslabs/ll-laravel-cors` package in your `composer.json` and update your dependencies:
 ```sh
-composer require fruitcake/laravel-cors
+composer require luminouslabs/ll-laravel-cors
 ```
 
-If you get a conflict, this could be because an older version of barryvdh/laravel-cors or fruitcake/laravel-cors is installed. Remove the conflicting package first, then try install again:
+If you get a conflict, this could be because an older version of luminouslabs/ll-laravel-cors is installed. Remove the conflicting package first, then try install again:
 
 ```sh
 composer remove barryvdh/laravel-cors fruitcake/laravel-cors
-composer require fruitcake/laravel-cors
+composer require luminouslabs/ll-laravel-cors
 ```
 
 ## Global usage
@@ -114,8 +83,6 @@ On Lumen, just register the ServiceProvider manually in your `bootstrap/app.php`
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
 ```
 
-Also copy the [cors.php](https://github.com/fruitcake/laravel-cors/blob/master/config/cors.php) config file to `config/cors.php` and put it into action:
-
 ```php
 $app->configure('cors');
 ```
@@ -168,22 +135,3 @@ The CORS Middleware should be the only place you add these headers. If you also 
 
 ### No Cross-Site requests
 If you are not doing Cross-Site requests, meaning if you are not requesting site-a.com/api from site-b.com, your browser will not send the `Origin: https://site-b.com` request header, CORS will be "disabled" as the `Access-Control-Allow-Origin` header will be also missing. This happens because requests are being dispatched from the same and no protection is needed in this case.
-
-## License
-
-Released under the MIT License, see [LICENSE](LICENSE).
-
-[ico-version]: https://img.shields.io/packagist/v/fruitcake/laravel-cors.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-actions]: https://github.com/fruitcake/laravel-cors/actions/workflows/run-tests.yml/badge.svg
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/fruitcake/laravel-cors.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/fruitcake/laravel-cors.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/fruitcake/laravel-cors.svg?style=flat-square
-
-[link-packagist]: https://packagist.org/packages/fruitcake/laravel-cors
-[link-actions]: https://github.com/fruitcake/laravel-cors/actions
-[link-scrutinizer]: https://scrutinizer-ci.com/g/fruitcake/laravel-cors/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/fruitcake/laravel-cors
-[link-downloads]: https://packagist.org/packages/fruitcake/laravel-cors
-[link-author]: https://github.com/fruitcake
-[link-contributors]: ../../contributors
