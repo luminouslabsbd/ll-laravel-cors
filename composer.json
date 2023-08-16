@@ -20,7 +20,7 @@
         "fruitcake/php-cors": "^1.2"
     },
     "require-dev": {
-        "laravel/framework": "^6|^7.24|^8",
+        "laravel/framework": "^6|^7.24|^8|^10",
         "phpunit/phpunit": "^9",
         "squizlabs/php_codesniffer": "^3.5",
         "orchestra/testbench-dusk": "^4|^5|^6|^7"
